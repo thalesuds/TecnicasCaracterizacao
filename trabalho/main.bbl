@@ -1,0 +1,112 @@
+\providecommand{\abntreprintinfo}[1]{%
+ \citeonline{#1}}
+\setlength{\labelsep}{0pt}\begin{thebibliography}{}
+\providecommand{\abntrefinfo}[3]{}
+\providecommand{\abntbstabout}[1]{}
+\abntbstabout{v-1.9.7 }
+
+\bibitem[Bedoya R.~Valdez e Alvarez-Ampar{\'{a}}n 2022]{articleXRDBedoya2021}
+\abntrefinfo{Bedoya R.~Valdez e Alvarez-Ampar{\'{a}}n}{BEDOYA R.~VALDEZ;
+  ALVAREZ-AMPAR{\'{A}}N}{2022}
+{BEDOYA R.~VALDEZ, L.~C. J.; ALVAREZ-AMPAR{\'{A}}N, A.~O. M. Performance of
+  al-{MCM}-41 nanospheres as catalysts for dimethyl ether production.
+\textbf{Catalysis Today}, Elsevier {BV}, v. 388-389, p. 55--62, apr 2022.}
+
+\bibitem[Bruker 2023]{webSiteDiffracEva}
+\abntrefinfo{Bruker}{BRUKER}{2023}
+{BRUKER. \textbf{The Swiss Army Knife of the X-ray Diffractionist}. 2023.
+Dispon{\'\i}vel em:
+  \url{https://www.bruker.com/pt/products-and-solutions/diffractometers-and-x-ray-microscopes/
+  x-ray-diffractometers/diffrac-suite-software/diffrac-eva.html}. Acesso em:
+  Acesso em: 14 set. 2023.}
+
+\bibitem[CALLISTER 2002]{bookMaterialsScienceEngineeringCallister}
+\abntrefinfo{CALLISTER}{CALLISTER}{2002}
+{CALLISTER, D. G.~R. W.~D. \textbf{Ci\^encia e Engenharia de Materiais - Uma
+  Introdução}. 5. ed. Rio de Janeiro: LTC, 2002. Dispon{\'\i}vel em:
+  \url{Disponivel em:
+  https://brogdomonzao.files.wordpress.com/2013/10/cic3aancia-e-engenharia-de-materiais-uma-introduc3a7c3a3o-william-d-callister-jr.pdf}.}
+
+\bibitem[Coelho 2021]{pptDifracaoRaioXAntonioCarlos}
+\abntrefinfo{Coelho}{COELHO}{2021}
+{COELHO, A. C.~V. \textbf{Difração de Raios X (XRD): Príncipios Básicos}.
+  2021. 90~p.
+Dispon{\'\i}vel em:
+  \url{https://edisciplinas.usp.br/pluginfile.php/7515956/mod\_resource/content/10/DRX-Principios-2021-v7.0.pdf}.
+  Acesso em: Acesso em: 14 set. 2023.}
+
+\bibitem[Daronch et al. 2021]{articledrxDaronch2019}
+\abntrefinfo{Daronch et al.}{DARONCH et al.}{2021}
+{DARONCH, N.~A.; HILLESHEIM, E.~L.; MENON, E.~A.; SILVA, B.~A. da; AGUIAR,
+  V.~P. de; LAGO, R. M.~D.; MIGNONI, M.~L. S{\'{\i}}ntese e
+  apliaca{\c{c}}{\~{a}}o dos materiais mesoporosos do tipo {MCM}-41 e {MCM}-48
+  contendo metais (ti ou zn) em adsor{\c{c}}{\~{a}}o/fotocat{\'{a}}lise do
+  corante azul de metileno/ synthesis and application mesoporous materials of
+  {MCM}-41 an {MCM}-48 type containing metals (ti or zn) in
+  adsorption/photocatalysis of methylene blue dye.
+\textbf{Brazilian Journal of Development}, South Florida Publishing {LLC},
+  v.~7, n.~4, p. 37576--37590, apr 2021.
+Dispon{\'\i}vel em: \url{https://doi.org/10.34117\%2Fbjdv7n4-294}.}
+
+\bibitem[Dhal, Dash e Hota 2019]{articleDahl2019}
+\abntrefinfo{Dhal, Dash e Hota}{DHAL; DASH; HOTA}{2019}
+{DHAL, J.~P.; DASH, T.; HOTA, G. Iron oxide impregnated mesoporous {MCM}-41:
+  synthesis, characterization and adsorption studies.
+\textbf{Journal of Porous Materials}, Springer Science and Business Media
+  {LLC}, v.~27, n.~1, p. 205--216, sep 2019.
+Dispon{\'\i}vel em: \url{https://doi.org/10.1007\%2Fs10934-019-00803-0}.}
+
+\bibitem[Kresge et al. 1992]{articleXRDKresge1992}
+\abntrefinfo{Kresge et al.}{KRESGE et al.}{1992}
+{KRESGE, C.~T.; LEONOWICZ, M.~E.; ROTH, W.~J.; VARTULI, J.~C.; BECK, J.~S.
+  Ordered mesoporous molecular sieves synthesized by a liquid-crystal template
+  mechanism.
+\textbf{Nature}, Springer Science and Business Media {LLC}, v.~359, n.~6397, p.
+  710--712, oct 1992.}
+
+\bibitem[Leng 2013]{bookMaterialsCharacterizationYang}
+\abntrefinfo{Leng}{LENG}{2013}
+{LENG, Y. \textbf{Materials Characterization: Introduction to Microscopic and
+  Spectroscopic Methods}. 2. ed. [S.l.]: Weinheim: Wiley-VCH, 2013.
+ISBN 9783527334636,9783527670772,3527334637.}
+
+\bibitem[Luan et al. 1995]{articledrxLuan1995}
+\abntrefinfo{Luan et al.}{LUAN et al.}{1995}
+{LUAN, Z.; CHENG, C.-F.; ZHOU, W.; KLINOWSKI, J. Mesopore molecular sieve
+  {MCM}-41 containing framework aluminum.
+\textbf{The Journal of Physical Chemistry}, American Chemical Society ({ACS}),
+  v.~99, n.~3, p. 1018--1024, jan 1995.
+Dispon{\'\i}vel em: \url{https://doi.org/10.1021\%2Fj100003a026}.}
+
+\bibitem[Macedo 2023]{webSiteCAIQUNB}
+\abntrefinfo{Macedo}{MACEDO}{2023}
+{MACEDO, J. A.~D. Julio Lemos~de. \textbf{Difratômetro de Raios X de pó
+  (DRX)}. 2023.
+Dispon{\'\i}vel em:
+  \url{https://caiq.unb.br/equipamentos/471-difratometro-de-raios-x-de-po}.
+  Acesso em: Acesso em: 14 set. 2023.}
+
+\bibitem[Melo et al. 1999]{articleMelo1999}
+\abntrefinfo{Melo et al.}{MELO et al.}{1999}
+{MELO, R.~A.; GIOTTO, M.~V.; ROCHA, J.; URQUIETA-GONZ{\'{A}}LEZ, E.~A. {MCM}-41
+  ordered mesoporous molecular sieves synthesis and characterization.
+\textbf{Materials Research}, {FapUNIFESP} ({SciELO}), v.~2, n.~3, p. 173--179,
+  jul 1999.
+Dispon{\'\i}vel em: \url{https://doi.org/10.1590\%2Fs1516-14391999000300010}.}
+
+\bibitem[Panalytical 2023]{webHighScorePlus}
+\abntrefinfo{Panalytical}{PANALYTICAL}{2023}
+{PANALYTICAL, M. \textbf{HighScore Plus}. 2023.
+Dispon{\'\i}vel em: \url{https://www.malvernpanalytical.com/br
+  /products/category/software/x-ray-diffraction-software/highscore-with-plus-option}.
+  Acesso em: Acesso em: 14 set. 2023.}
+
+\bibitem[Vallcorba Jordi~Rius 2012]{articleDajust}
+\abntrefinfo{Vallcorba Jordi~Rius}{VALLCORBA JORDI~RIUS}{2012}
+{VALLCORBA JORDI~RIUS, C.~F. O. {DAJUST: a suite of computer programs for
+  pattern matching, space-group determination and intensity extraction from
+  powder diffraction data}.
+International Union of Crystallography, v.~45, n.~4, p. 844–848, 2012.
+Dispon{\'\i}vel em: \url{http://scripts.iucr.org/cgi-bin/paper?he5554}.}
+
+\end{thebibliography}

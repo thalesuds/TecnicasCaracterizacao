@@ -1,0 +1,92 @@
+% ----------------------------------------------------------
+% ARQUIVO PRINCIPAL DO DOCUMENTO
+% ----------------------------------------------------------
+
+% ---
+% Configuração de classe do documento
+% ---
+
+\documentclass[
+	% -- opções da classe memoir --
+	12pt,				% tamanho da fonte
+	openright,			% capítulos começam em pág ímpar (insere página vazia caso preciso)
+	oneside,			% para impressão em recto e verso. Oposto a oneside
+	a4paper,			% tamanho do papel. 
+	% -- opções da classe abntex2 --
+	chapter=TITLE,		% títulos de capítulos convertidos em letras maiúsculas
+	%section=TITLE,		% títulos de seções convertidos em letras maiúsculas
+	%subsection=TITLE,	% títulos de subseções convertidos em letras maiúsculas
+	%subsubsection=TITLE,% títulos de subsubseções convertidos em letras maiúsculas
+	% -- opções do pacote babel --
+	english,			% idioma adicional para hifenização
+	french,				% idioma adicional para hifenização
+	spanish,			% idioma adicional para hifenização
+	brazil,				% o último idioma é o principal do documento
+	sumario=tradicional]{abntex2}
+
+% ---
+% Configurações iniciais
+% ---
+
+% Pacote para visualização de códigos
+% \usepackage{fancyvrb}
+%\usepackage{minted}
+
+% Pacotes usuais
+\input{00-pacotes.tex}
+
+% Modelo da UNIVALI
+\usepackage[tipo=Trabalho,warningsoff=all]{Unioeste}
+
+
+
+% Informações do documento: para capa e folha de rosto
+\input{01-dados.tex}
+ 
+% Compilar o índice
+\makeindex
+
+% ----
+% Documento
+% ----
+
+\begin{document}
+ 
+% Inserir os elementos prétextuais
+
+\pretextual
+
+\input{02-pretextual}
+ 
+ 
+% Inserir os elementos textuais
+\textual
+
+\input{10-intro}
+
+%\input{11-metodologia}
+
+\input{12-desenv}
+
+\input{13-conclusao}
+% Inserir os elementos póstextuais
+\postextual
+
+
+% Carregar o arquivo de referências
+\bibliography{20-referencias}
+
+
+% Inserir os apêndices
+\begin{apendicesenv}
+\input{21-apendices}
+\end{apendicesenv}
+
+
+% Inserir os anexos
+\begin{anexosenv}
+\input{22-anexos}
+\end{anexosenv}
+
+
+\end{document}

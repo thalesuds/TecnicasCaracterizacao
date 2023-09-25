@@ -1,0 +1,802 @@
+%% Unioeste v1.2.5b
+%
+%% Customizações do abnTeX2 (http://abnTeX2.googlecode.com) 
+%
+%% This may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in
+%%   http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2005/12/01 or later.
+%
+%% This work has the LPPL maintenance status `maintained'.
+%
+%% The Current Maintainer of this work is Thales Uchoa da Costa Sobrinho,
+%% thales.sobrinho@unioeste.br; thales.uds@hotmail.com
+%
+%% This work consists of the file univali.sty
+%
+%% This work is loosely based on UFPR.sty, created by
+%% Emílio Eiji Kavamura, eek.edu@outlook.com.
+%
+%% Further information on UFPR.sty are available on
+%% https://github.com/eekBR/ufpr-abntex/blob/master/UFPR.sty
+
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{Unioeste}[2023/09/09 Modelo Unioeste]
+
+% ----------------------------------------------------------
+% CONFIGURAÇÕES PRELIMINARES
+% ----------------------------------------------------------
+
+\RequirePackage[brazil]{babel}
+\RequirePackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibl
+
+\RequirePackage[alf,bibjustif,abnt-emphasize=bf,abnt-etal-list=0]{abntex2cite}
+
+% \RequirePackage[num,abnt-emphasize=bf,bibjustif,overcite]{abntex2cite}
+%     \citebrackets{}
+%     \bibliographystyle{abnt-num}
+
+\RequirePackage{xkeyval}
+
+\newcommand{\Trabalho}{Trabalho}
+\newcommand{\padrao}{padrao}
+\newcommand{\autordata}{autordata}
+\newcommand{\numerico}{numerico}
+
+% Comandos padrão caso o usuário não defina um
+\newcommand{\tipodoc}{padrao} % Para o tipo de capa
+\newcommand{\tipocitacao}{autordata} % Para o tipo de citação
+
+% ---
+% Definir tipo de capa e tipo de citação
+% ---
+
+\makeatletter
+\define@key{fam}{tipo}{%
+    \ifthenelse{\equal{#1}{Trabalho}}{%
+    \renewcommand{\tipodoc}{Trabalho}}{%
+    }
+    \ifthenelse{\equal{#1}{padrao}}{%
+    \renewcommand{\tipodoc}{padrao}}{%
+    }
+}\ExecuteOptionsX<fam>{tipo=padrao}
+\makeatother
+
+% ---
+% Configurações do pacote backref
+% Usado sem a opção hyperpageref de backref
+\renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+% Texto padrão antes do número das páginas
+\renewcommand{\backref}{}
+% Define os textos da citação
+\renewcommand*{\backrefalt}[4]{
+	\ifcase #1 %
+	%	Nenhuma citação no texto.
+	\or
+	%	Citado na página #2.
+	\else
+	%	Citado #1 vezes nas páginas #2.
+	\fi}%
+
+% Tirar os comentários no condicional acima para que nas referências esteja as páginas em que a referência foi citada.
+
+% ---
+% Configurações de aparência do PDF final
+% ---
+ 
+% iIformações do PDF
+\makeatletter
+\hypersetup{
+     	%pagebackref=true,
+		pdftitle={\@title}, 
+		pdfauthor={\@author},
+    	pdfsubject={\imprimirpreambulo},
+	    pdfcreator={LaTeX with abnTeX2},
+		pdfkeywords={palavrachave1}{palavrachave2}, 
+		colorlinks=true,       		% false: boxed links; true: colored links
+    	linkcolor=black,          	% color of internal links
+    	citecolor=black,        		% color of links to bibliography
+    	filecolor=black,      		% color of file links
+		urlcolor=black,
+		bookmarksdepth=4
+}
+\makeatother
+
+% ----------------------------------------------------------
+% CONFIGURAÇÕES DE TIPOGRAFIA
+% ----------------------------------------------------------
+
+\RequirePackage{graphicx}
+
+\RequirePackage[T1]{fontenc} % Melhoria no uso de acentuação, hifenização automática, etc.
+
+\RequirePackage[utf8]{inputenc} % Uso de acentos e outros símbolos.
+
+\RequirePackage{caption} % Mais opções de títulos em figuras e tabelas.
+
+\RequirePackage{microtype} % Melhorias nas extensão tipográficas.
+
+\RequirePackage{silence}
+
+% ---
+% Configurações do pacote caption
+% ---
+
+\captionsetup[table]{format=plain,labelsep=endash,slc=off}
+\captionsetup[figure]{format=plain,labelsep=endash,slc=off}
+\captionsetup[grafico]{format=plain,labelsep=endash,slc=off}
+\captionsetup[mapa]{format=plain,labelsep=endash,slc=off}
+\captionsetup[esquema]{format=plain,labelsep=endash,slc=off}
+\captionsetup[quadro]{format=plain,labelsep=endash,slc=off}
+\captionsetup[subfigure]{format=plain,slc=off,justification=centering}
+
+%---
+% Hifenização e caracteres especiais português-brasil por padrão
+%---
+
+\selectlanguage{brazil}
+
+% ---
+% Espaçamentos
+% ---
+
+% Retirar espaço extra obsoleto entre as frases:
+\frenchspacing
+
+% Tamanho do parágrafo:
+\setlength{\parindent}{0 cm}
+
+% Espaçamento entre um parágrafo e outro:
+\setlength{\parskip}{12pt}
+
+% Aumentar o espaçamento das linhas em tabelas para torná-las mais legíveis (só muda um pouco)
+\renewcommand{\arraystretch}{1.1}
+
+% Espaçamento entre a legenda e a fonte (e nota) de figuras e tabelas:
+\setlength{\abovecaptionskip}{0 mm}
+\setlength{\belowcaptionskip}{0 mm}
+
+%---
+% Fontes padrões de part, chapter, section, subsection e subsubsection
+%---
+
+\newcommand{\ABNTEXtitlefont}{\normalfont}
+\newcommand{\ABNTEXtitlefontsize}{\normalsize}
+
+\renewcommand{\ABNTEXpartfont}{\ABNTEXchapterfont}
+\renewcommand{\ABNTEXpartfontsize}{\ABNTEXchapterfontsize}
+
+\renewcommand{\ABNTEXchapterfont}{\normalfont\bfseries}
+\renewcommand{\ABNTEXchapterfontsize}{\normalsize}
+
+\renewcommand{\ABNTEXsectionfont}{\normalfont\bfseries}
+\renewcommand{\ABNTEXsectionfontsize}{\normalsize}
+
+\renewcommand{\ABNTEXsubsectionfont}{\normalfont}
+\renewcommand{\ABNTEXsubsectionfontsize}{\normalsize}
+
+\renewcommand{\ABNTEXsubsubsectionfont}{\normalfont}
+\renewcommand{\ABNTEXsubsubsectionfontsize}{\normalsize}
+
+\renewcommand{\ABNTEXsubsubsubsectionfont}{\normalfont}
+\renewcommand{\ABNTEXsubsubsubsectionfontsize}{\normalsize}
+
+% ---
+% Fontes padrões
+% ---
+
+% Fonte padrão geral do documento
+\RequirePackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+
+% Estilo de fonte constante entre sumário e títulos no texto
+\renewcommand{\cftchapterfont}{\ABNTEXchapterfont}
+\renewcommand{\cftsectionfont}{\ABNTEXsectionfont}
+\renewcommand{\cftsubsectionfont}{\ABNTEXsubsectionfont}
+\renewcommand{\cftsubsubsectionfont}{\ABNTEXsubsubsectionfont}
+\renewcommand{\cftsubsubsubsectionfont}{\ABNTEXsubsubsubsectionfont}
+
+% ---
+% Equações
+% ---
+
+% Não resetar a numeração pela mudança de capítulos
+\counterwithout{equation}{chapter}
+
+% Numeração de equações somente com o número da equação em arábico (sem o número da seção).
+\renewcommand{\theequation}{\arabic{equation}} 
+
+% ---
+% Títulos
+% ---
+
+% Gerais
+\addto\captionsbrazil{
+  \renewcommand{\chaptername}{CAPÍTULO}
+  \renewcommand{\bibname}{REFERÊNCIAS}
+  \renewcommand{\contentsname}{SUMÁRIO}
+  \renewcommand{\folhaderostoname}{PÁGINA DE TÍTULO}
+  \renewcommand{\epigraphname}{EPÍGRAFE}
+  \renewcommand{\dedicatorianame}{DEDICATÓRIA}
+  \renewcommand{\errataname}{ERRATA}
+  \renewcommand{\agradecimentosname}{AGRADECIMENTOS}
+  \renewcommand{\anexoname}{ANEXO}
+  \renewcommand{\anexosname}{ANEXOS}
+  \renewcommand{\appendixname}{APÊNDICE}
+  \renewcommand{\apendicesname}{APÊNDICES}
+  \renewcommand{\orientadorname}{Orientador:}
+  \renewcommand{\coorientadorname}{Coorientador:}
+  \renewcommand{\folhadeaprovacaoname}{FOLHA DE APROVAÇÃO}
+  \renewcommand{\resumoname}{RESUMO}
+  \renewcommand{\listfigurename}{LISTA DE ILUSTRAÇÕES}
+  \renewcommand{\listtablename}{LISTA DE TABELAS}
+  \renewcommand{\listadesiglasname}{LISTA DE SIGLAS E ABREVIATURAS}
+  \renewcommand{\listadesimbolosname}{LISTA DE SÍMBOLOS}
+  \renewcommand{\fontename}{Fonte:}
+  \renewcommand{\abstractname}{ABSTRACT}
+}
+
+% Lista de símbolos
+\renewenvironment{simbolos}{%
+  \pretextualchapter{\listadesimbolosname}
+  \addcontentsline{toc}{chapter}{\listadesimbolosname}
+  \begin{symbols}
+}{%
+  \end{symbols}
+  \cleardoublepage
+}
+
+% Lista de siglas e abreviaturas
+\renewenvironment{siglas}{%
+  \pretextualchapter{\listadesiglasname}
+  \addcontentsline{toc}{chapter}{\listadesiglasname}
+  \begin{symbols}
+}{%
+  \end{symbols}
+  \cleardoublepage
+}
+
+% Lista de ilustrações
+\makeatletter
+\renewcommand\listoffigures{%
+  \pretextualchapter{\listfigurename}
+  \addcontentsline{toc}{chapter}{\listfigurename}
+    \@starttoc{lof}%
+}
+\makeatother
+
+%Lista de tabelas
+\makeatletter
+\renewcommand\listoftables{%
+  \pretextualchapter{\listtablename}
+  \addcontentsline{toc}{chapter}{\listtablename}
+    \@starttoc{lot}%
+}
+\makeatother
+
+% Resumo
+\renewenvironment{resumo}[1][\resumoname]{%
+   \renewcommand{\abstractnamefont}{\chaptitlefont}
+   \renewcommand{\abstractname}{\ABNTEXchapterupperifneeded{#1}}
+   \begin{abstract}\thispagestyle{preunioeste}
+   %\addcontentsline{toc}{chapter}{\resumoname}
+  }{\end{abstract}}
+  
+\renewenvironment{resumoumacoluna}[1][\resumoname]{%
+   \renewcommand{\abstractnamefont}{\chaptitlefont}
+   \renewcommand{\abstractname}{\ABNTEXchapterupperifneeded{#1}}
+   \begin{onecolabstract}\thispagestyle{preunioeste}
+   %\addcontentsline{toc}{chapter}{\resumoname}
+}{\end{onecolabstract}}
+
+% Dedicatória
+\renewenvironment{dedicatoria}[1][]{%
+   \ifthenelse{\equal{#1}{}}{%
+   \pretextualchapter{\dedicatorianame}
+    %\addcontentsline{toc}{chapter}{\dedicatorianame}
+  }{\PRIVATEclearpageifneeded}}
+
+% Agradecimentos
+\renewenvironment{agradecimentos}[1][\agradecimentosname]{%
+   \pretextualchapter{#1}
+   %\addcontentsline{toc}{chapter}{\agradecimentosname}
+  }{\PRIVATEclearpageifneeded}
+
+% ---
+% Inclusão de gráficos, quadros, esquemas, etc. como formas de figuras
+% ---
+
+% Quadro
+\newcommand{\quadroname}{Quadro}
+\newfloat[chapter]{quadro}{lof}{\quadroname}
+\newlistentry{quadro}{lof}{0}
+\counterwithout{quadro}{chapter}
+\renewcommand{\cftquadroname}{\quadroname\space} 
+\renewcommand*{\cftquadroaftersnum}{\hfill--\hfill}
+\setfloatlocations{quadro}{hbtp} % configurando posicionamento padrão
+
+% Mapa
+\newcommand{\mapaname}{Mapa}
+\newfloat[chapter]{mapa}{lof}{\mapaname}
+\newlistentry{mapa}{lof}{0}
+\counterwithout{mapa}{chapter}
+\renewcommand{\cftmapaname}{\mapaname\space} 
+\renewcommand*{\cftmapaaftersnum}{\hfill--\hfill}
+\setfloatlocations{mapa}{hbtp} % configurando posicionamento padrão
+
+% Esquema
+\newcommand{\esquemaname}{Esquema}
+\newfloat[chapter]{esquema}{lof}{\esquemaname}
+\newlistentry{esquema}{lof}{0}
+\counterwithout{esquema}{chapter}
+\renewcommand{\cftesquemaname}{\esquemaname\space} 
+\renewcommand*{\cftesquemaaftersnum}{\hfill--\hfill}
+\setfloatlocations{esquema}{hbtp} % configurando posicionamento padrão
+
+% Gráfico
+\newcommand{\graficoname}{Gráfico}
+\newfloat[chapter]{grafico}{lof}{\graficoname}
+\newlistentry{grafico}{lof}{0}
+\counterwithout{grafico}{chapter}
+\renewcommand{\cftgraficoname}{\graficoname\space} 
+\renewcommand*{\cftgraficoaftersnum}{\hfill--\hfill}
+\setfloatlocations{grafico}{hbtp} % configurando posicionamento padrão
+
+% ----------------------------------------------------------
+% CONFIGURAÇÕES DE ESTILO DE PÁGINA E LAYOUT
+% ----------------------------------------------------------
+
+% ---
+% Elementos pré-textuais
+% ---
+
+% Novo estilo de cabeçalhos e rodapés (capaunivali)
+\makepagestyle{capaunioeste} 
+
+ % Cabeçalho
+ \makeevenhead{capaunioeste} 
+    {} % Topo par à esquerda
+    {} % Centro
+    {} % Direita
+ 
+ \makeoddhead{capaunioeste}% Página ímpar ou com oneside
+    {} % Topo par à esquerda
+    {} % Centro
+    {} % Direita
+
+\makeheadrule{capaunioeste}{\textwidth}{\normalrulethickness} % Linha
+
+% Novo estilo de cabeçalhos e rodapés (preunivali)
+\makepagestyle{preunioeste} 
+
+ % Cabeçalho
+ \makeevenhead{preunioeste} 
+    {} % Topo par à esquerda
+    {} % Centro
+    {} % Direita
+ 
+ \makeoddhead{preunioeste}% Página ímpar ou com oneside
+    {} % Topo par à esquerda
+    {} % Centro
+    {} % Direita
+
+%% Customizar comando \pretextual
+\renewcommand{\pretextual}{
+  \pagenumbering{arabic} % Numeros romanos em minúsculo
+  \aliaspagestyle{chapter}{preunioeste}
+  \pagestyle{preunioeste} % Usar as configurações acima
+  \aliaspagestyle{cleared}{empty}
+  \aliaspagestyle{part}{preunioeste}
+}
+
+% ---
+% Elementos textuais
+% ---
+
+% Novo estilo de cabeçalhos e rodapés
+\makepagestyle{textualunioeste}
+ 
+ % Cabeçalho
+ \makeevenhead{textualunioeste} % Página par
+    {\footnotesize{\thepage}} % Topo par à esquerda
+    {} % Centro
+    {} % Direita
+    
+ \makeoddhead{textualunioeste} % Página ímpar ou com oneside
+    {}% Topo ímpar/oneside à esquerda}
+    {}% Centro
+    {\footnotesize{\thepage}} % Direita
+ 
+ % Rodapé
+ \makeevenfoot{textualunioeste} % Página par
+    {} % Rodapé par à esquerda} 
+    {} % Centro
+    {} % Direita} 
+ \makeoddfoot{textualunioeste} % Página ímpar ou com oneside
+    {} % Rodapé ímpar/onside à esquerda
+    {} % Centro
+    {} % Direita}
+
+\renewcommand{\textual}{%
+    \ifthenelse{\equal{\ABNTEXisarticle}{true}}{%
+    \pagestyle{textualunioeste}%
+  }{%else  
+    \pagestyle{textualunioeste}%
+    \aliaspagestyle{chapter}{abntchapfirst}% customizing chapter pagestyle
+  }  
+    \nouppercaseheads%
+    \bookmarksetup{startatroot}% 
+}
+
+% Customizar comando \textual
+\renewcommand{\textual}{
+  \aliaspagestyle{chapter}{textualunioeste}
+  \pagestyle{textualunioeste} % Usar as configurações acima
+  \aliaspagestyle{cleared}{empty}
+  \aliaspagestyle{part}{textualunioeste}
+}
+
+% ---
+% Elementos pós-textuais
+% ---
+\renewcommand{\postextual}{\phantompart}
+
+% ----------------------------------------------------------
+% CONFIGURAÇÕES DE COMANDOS ADICIONAIS
+% ----------------------------------------------------------
+
+% Comando para inserir o V riscado para volume (engenharia química).
+\newcommand{\Vol}{\rotatebox[origin=c]{180}{\ensuremath{A}}} 
+
+% Comando para inserir fonte nas ilustrações e tabelas (Fonte: <input do usuário>).
+\renewcommand{\fonte}[1]{\legend{\footnotesize \fontename \ #1}} 
+
+% Comando para inserir notas nas ilustrações e tabelas.
+\renewcommand{\nota}[1]{\legend{\footnotesize #1}} 
+
+% Imprime o autor e o ano (sem parênteses). O uso deste comando é intencionado para fontes de ilustrações e tabelas.
+\newcommand{\citefonte}[1]{\citeauthor{#1}, \citeyear{#1}} 
+
+% Sobrescrito para text
+\newcommand{\pot}[1]{$^{\text{#1}}$}
+
+% Subscrito para text
+\newcommand{\sub}[1]{$_{\text{#1}}$}
+
+
+% ×10^{<input do user>}
+\newcommand{\E}[1]{$\times\text{10}^{\text{#1}}$}
+
+% ---
+% Criar figuras facilmente utilizando o pacote xparse
+% ---
+
+\RequirePackage{xparse}
+
+% Comando normal
+\NewDocumentCommand\figura{O{figure} m m m m m o}{% 
+  \begin{#1}[ht]
+    \centering
+    \begin{minipage}{#5}
+    \caption{#3}\label{#6}
+    \includegraphics[width=\linewidth]{#2}
+    \fonte{#4}
+    \IfNoValueF{#7}{\nota{#7}}
+    \end{minipage}
+  \end{#1}
+}
+
+% Comando com frame ao redor da figura
+\setlength{\fboxrule}{.75pt}% Grossura das frames
+\NewDocumentCommand\figuraframe{O{figure} m m m m m o}{% 
+  \begin{#1}[ht]
+    \centering
+    \begin{minipage}{#5}
+    \caption{#3}\label{#6}
+    \fbox{\includegraphics[width=0.96\linewidth]{#2}}
+    \fonte{#4}
+    \IfNoValueF{#7}{\nota{#7}}
+    \end{minipage}
+  \end{#1}
+}
+
+% ---
+% Criar figuras facilmente utilizando o pacote xparse
+% ---
+
+\RequirePackage{threeparttable}
+
+\NewDocumentCommand\tabela{O{table} m m m m o}{%
+  \begin{#1}[ht]
+    \centering
+    \begin{threeparttable}
+    \caption{#3}\label{#5}
+    #2
+    \fonte{#4}
+    \IfNoValueF{#6}{\nota{#6}}
+    \end{threeparttable}
+  \end{#1}
+}
+
+% ---
+% Opção para silenciar warnings e/ou errors
+% ---
+
+% Warnings
+\makeatletter
+\define@key{fam}{warningsoff}{
+    \ifthenelse{\equal{#1}{all}}{%
+    \WarningsOff
+    }{%
+    \WarningsOff[#1]
+    }
+}
+
+% Errors
+\define@key{fam}{errorssoff}{
+    \ifthenelse{\equal{#1}{all}}{%
+    \ErrorsOff
+    }{%
+    \ErrorsOff[#1]
+    }
+}
+\makeatother
+\ProcessOptionsX<fam>\relax
+
+% ----------------------------------------------------------
+% CONFIGURAÇÕES ESPECÍFICAS DE TIPO DE CAPA
+% ----------------------------------------------------------
+
+\newcommand{\imprimircurso}[1]{}
+\newcommand{\curso}[1]{\def\imprimircurso{#1}}
+
+\makeatletter
+
+\ifx \tipodoc \Trabalho
+    \renewcommand{\imprimircapa}{%
+    \pagestyle{empty}
+      \begin{capa}%
+        \par\noindent\rule{\textwidth}{0.4pt}
+        \vspace{-40pt}
+        \center
+        \begin{minipage}{16cm}
+        \center
+            \begin{minipage}{3cm}
+                \includegraphics[width=\linewidth]{figures/unioeste_logo.png}
+            \end{minipage}%
+            \begin{minipage}{12.5cm}
+                \center
+                \textls[175]{\textbf{\fontsize{16}{1}\selectfont\MakeUppercase\imprimirinstituicao}}\\
+                \textls[75]{\textbf{\fontsize{14}{1}\selectfont PROGRAMA DE PÓS-GRADUAÇÃO EM ENGENHARIA QUÍMICA}}\\
+                \textbf{\fontsize{14}{1}\selectfont  \imprimircurso}\par
+            \end{minipage}
+        \end{minipage}
+            
+        
+        \vfill\vfill\vfill
+        
+        {\fontsize{14}{1}\selectfont\textbf{\MakeUppercase{\imprimirtitulo}}}
+        
+        \vfill
+        
+        {\fontsize{14}{1}\selectfont Ac: \imprimirautor}
+        
+        \vfill
+        
+        \abntex@ifnotempty{\imprimirorientador}
+        {\fontsize{14}{1}\selectfont \imprimirorientadorRotulo~\imprimirorientador}
+        \bigskip
+        \abntex@ifnotempty{\imprimircoorientador}
+    	{\fontsize{14}{1}\selectfont \par\imprimircoorientadorRotulo~\imprimircoorientador}%
+        
+        \vfill
+        
+        \imprimirlocal
+    
+        \imprimirdata
+         
+        \vspace*{1cm}
+      \end{capa}
+    }
+\fi
+
+\ifx \tipodoc \padrao
+    \renewcommand{\imprimircapa}{%
+      \begin{capa}%
+        \center
+        \ABNTEXtitlefont\MakeUppercase\imprimirinstituicao
+        
+        \ABNTEXtitlefont\MakeUppercase\imprimirautor
+    
+        \vfill
+        \ABNTEXtitlefont\MakeUppercase\imprimirtitulo
+        \vfill
+        
+         \imprimirlocal
+         
+         \imprimirdata
+        
+        \vspace*{1cm}
+      \end{capa}
+    }
+\fi
+
+\makeatother
+
+%---
+% Folha de rosto
+%---
+
+% usar \imprimirfolhaderosto* caso deseje imprimir algo no verso da página no caso de estar no modo twoside. Útil para imprimir a Ficha Bibliográfica. Porem, se estiver no modo oneside, a versão sem estrela é idêntica.
+\renewenvironment{folhaderosto}[1][\folhaderostoname]{\clearpage\PRIVATEbookmarkthis{#1}}{\cleardoublepage}
+\renewenvironment{folhaderosto*}[1][\folhaderostoname]{\clearpage\PRIVATEbookmarkthis{#1}}{\newpage}%
+
+\makeatletter
+\renewcommand{\folhaderostocontent}{
+  \begin{center}
+
+    %\vspace*{1cm}
+    {\ABNTEXtitlefont
+    %\large
+    \MakeUppercase\imprimirautor}
+	
+    \vfill
+    \begin{center}
+      \ABNTEXtitlefont
+      %\bfseries
+      %\Large
+      \MakeUppercase\imprimirtitulo
+    \end{center}
+	
+    \abntex@ifnotempty{\imprimirpreambulo}{%
+      \hspace{.45\textwidth}
+      \begin{minipage}{.5\textwidth}
+      	\SingleSpacing\small
+         \imprimirpreambulo
+         
+         \bigskip
+         
+         \abntex@ifnotempty{\imprimirorientador}
+         {\imprimirorientadorRotulo~\imprimirorientador}
+			\abntex@ifnotempty{\imprimircoorientador}
+			{\par\imprimircoorientadorRotulo~\imprimircoorientador}%
+%
+%          \imprimirorientadorRotulo~\imprimirorientador\par
+%             \abntex@ifnotempty{\imprimircoorientador}
+% 				\imprimircoorientadorRotulo~\imprimircoorientador
+       \end{minipage}%
+  
+    }%
+
+\vspace*{\fill}
+
+
+    \imprimirlocal
+
+    \imprimirdata
+    \vspace*{1cm}
+
+  \end{center}
+}
+\makeatother
+
+% ----------------------------------------------------------
+% HISTÓRICO DE REVISÕES
+% ----------------------------------------------------------
+
+% -----------------
+% v1.0 (05/02/2018)
+% -----------------
+
+% Elaboração deste style.
+
+% ---
+% v1.0.1 (12/03/2018)
+% ---
+
+% Removido: funionalidades das listas de siglas e listas de abreviaturas automáticas.
+
+
+
+% -----------------
+% v1.1 (21/03/2018)
+% -----------------
+
+% Inserido: comando \citefonte para a citação de autores nas fontas das ilustrações e tabelas, que são ligeiramente diferentes das formas de citação dos comandos \cite e \citeonline.
+
+% Alterado: local (do comando \local, chamado por \imprimirlocal) para que só tivesse a primeira letra maiúscula (ex.: ITAJAÍ virou Itajaí).
+
+% Alterado: nome da Lista de Figuras para Lista de Ilustrações (determinado pelo comando \listfigurename).
+
+% Alterado: espaçamento entre parágrafos (de 0,2cm para 12pt: aumento de 111%).
+
+% Removido: recúo da primeira linha do parágrafo (de 1,27cm para 0cm).
+
+% ---
+% v1.1.1 (22/03/2018)
+% ---
+
+% Inserido: comando \theequation redefinido para realizar a numeração de equações somente com o número da equação em arábico (sem o número da seção), ex.: 2.4 para 4.
+
+% Inserido: pacote threeparttable para remover a necessidade de utilizar minipages com ajustes de comprimento. No seu ambiente "table" substitua os \begin{minipage}{xx} e \end{minipage} por \begin{threeparttable} e \end{threeparttable}, respectivamente.
+
+% Inserido: comando \renewcommand{\arraystretch}{1.1} para aumentar um pouco o espaçamento das linhas na tabela, deixando-as ligeiramente mais legíveis (esta mudança pode ser removida futuramente).
+
+% Alterado: comandos \lgnd e \lgnds para \fonte e \nota, respectivamente. Agora criados pelo comando \renewcommand, ambos reescrevem os comandos anteriores se adequando as necessidades da UNIVALI. Agora utilizam o comando \legend para serem adicionados, o comando ficou mais robusto agora.
+
+% Removido: distância após um caption (legenda de imagem, notas, fontes), no comando \belowcaptionskip.
+
+
+
+% -----------------
+% v1.2 (24/03/2018)
+% -----------------
+
+% Pacote agora tem um nome: univali, não mais .config. Inseridas opções do pacote, que são utilizadas no quando se chama o pacote (\usepackage{univali}), como um argumento opcional.
+
+% Inserido: opção "tipo" que permite o usuário definir entre dois tipos de documento: TICT e padrao. O TICT atualmente altera a capa para a capa do TICT da Eng. Quimica e o padrao é a capa normal. Se nada for preenchido pelo usuário, a opção padrao é escolhida por padrão.
+
+% Inserido: comando \figura para inserção de figuras.
+
+% Inserido: comando \tabela para inserção de tabelas.
+
+% Alterado: .config.sty para univali.sty. Agora é um pacote "completo", uma customização da classe abnTeX2.
+
+% ---
+% v1.2.1 (26/03/2018)
+% ---
+
+% Inserido: suporte para captions de mapas e esquemas, utilizando o comando \captionsetup.
+
+% Alterado: comando \figura reestruturado, agora com somente dois argumentos opcionais, [tipo] e [nota]. Com tipo, pode-se escolher outros environments de ilustração.
+
+% ---
+% v1.2.2 (27/03/2018)
+% ---
+
+% Inserido: opção "warningsoff" e "errorsoff" para silenciar erros e avisos específicos ou não do compiler.
+
+% Inserido: suporte para captions de quadros, utilizando o comando \captionsetup.
+
+% Alterado: estrutura do pacote para contornar bug de ordem dos comandos por conta do \ProcessOptionsX, que fazia com que a opção tipo não era praticamente ignorada no código por estar posicionado DEPOIS dos comandos que utilizavam ele.
+
+% Alterado: comando \fonte, de "Fonte: #1" para "\fontename #1". O comando \fontename pode ser customizado em outra parte do documento caso deseje alterá-lo.
+
+% ---
+% v1.2.3 (04/04/2018)
+% ---
+
+% Removido: espaçamento negativo antes da linha na capa do modelo, o resultado não era o que eu esperava e a capa começava antes da margem de 3 cm superior, o que está contra a norma.
+
+% ---
+% v1.2.4 (04/05/2018)
+% ---
+
+% Inserido: adicionado o comando \counterwithout{equation}{chapter} para que a numeração de equações não sofra um reset a cada capítulo.
+
+% ---
+% v1.2.5 (09/05/2018)
+% ---
+
+% Alterado: nome do centro de Centro de Ciências Tecnológicas da Terra e do Mar para Escola do Mar, Ciência e Tecnologia.
+
+% ---
+% v1.2.5a (29/05/2018)
+% ---
+
+% Alterado: balanceamento de \vfill na capa do modelo de TICT para que o título do trabalho fique mais próximo do centro da página no eixo vertical.
+
+% ---
+% v1.2.5b (09/06/2018)
+% ---
+
+% Inserido: \captionsetup para subfigures.
+
+% ---
+% v1.2.6 (06/07/2018)
+% ---
+
+% Alterado: todos os autores são mostrados nas referências (inclusive aqueles com mais de 3), adicionado a partir da opção "abnt-etal-list=0" no package abntex2cite.
